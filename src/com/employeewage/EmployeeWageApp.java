@@ -8,10 +8,10 @@ public class EmployeeWageApp {
 
         emp.checkAttendance();
 
-        if(emp.isPresent())
-            System.out.println("Employee is Present");
-        else
-            System.out.println("Employee is Absent");
+        EmployeeWageServices service = new EmployeeWageServices();
 
+        int wage = service.calculateDailyWage(emp.isPresent());
+
+        System.out.println("Daily Wage : " + wage);
     }
 }
