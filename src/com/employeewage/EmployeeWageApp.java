@@ -4,14 +4,16 @@ public class EmployeeWageApp {
 
     public static void main(String[] args) {
 
-        Employee emp = new Employee();
-
-        emp.checkAttendance();
-
         EmployeeWageServices service = new EmployeeWageServices();
 
-        int wage = service.calculateDailyWage(emp.isPresent());
+        int empType = (int)(Math.random()*3);
 
+        int hours = service.getWorkingHours(empType);
+
+        int wage = hours * EmployeeWageServices.WAGE_PER_HOUR;
+
+        System.out.println("Employee Hours : " + hours);
         System.out.println("Daily Wage : " + wage);
+
     }
 }

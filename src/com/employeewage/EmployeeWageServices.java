@@ -2,16 +2,19 @@ package com.employeewage;
 
 public class EmployeeWageServices {
 
-    private static final int WAGE_PER_HOUR = 20;
-    private static final int FULL_DAY_HOUR = 8;
+    public static final int WAGE_PER_HOUR = 20;
 
-    public int calculateDailyWage(boolean present) {
+    public int getWorkingHours(int empType) {
 
-        int workHours = 0;
+        int hours = 0;
 
-        if(present)
-            workHours = FULL_DAY_HOUR;
+        if(empType == 1)
+            hours = 4;   // Part Time
 
-        return workHours * WAGE_PER_HOUR;
+        else if(empType == 2)
+            hours = 8;   // Full Time
+
+        return hours;
     }
+
 }
