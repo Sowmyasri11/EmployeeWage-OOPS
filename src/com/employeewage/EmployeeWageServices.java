@@ -64,5 +64,25 @@ public class EmployeeWageServices {
 
         return totalWage;
     }
+    public int computeEmployeeWage(int wagePerHour,
+                                   int maxDays,
+                                   int maxHours)
+    {
+        int totalHours = 0;
+        int totalDays = 0;
+
+        while(totalHours <= maxHours && totalDays < maxDays)
+        {
+            totalDays++;
+
+            int empType = (int)(Math.random()*3);
+
+            int hours = getWorkingHours(empType);
+
+            totalHours += hours;
+        }
+
+        return totalHours * wagePerHour;
+    }
 
 }
