@@ -6,9 +6,9 @@ public class EmployeeWageApp {
 
         EmployeeWageServices service = new EmployeeWageServices();
 
-        int wage = service.calculateMonthlyWage();
+        int wage = service.calculateWageWithCondition();
 
-        System.out.println("Monthly Wage : " + wage);
+        System.out.println("Total Wage : " + wage);
 
     }
 }
