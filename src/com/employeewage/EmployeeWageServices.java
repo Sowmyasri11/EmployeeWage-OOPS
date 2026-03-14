@@ -1,5 +1,7 @@
 package com.employeewage;
 
+import java.util.ArrayList;
+
 public class EmployeeWageServices {
 
     public static final int WAGE_PER_HOUR = 20;
@@ -83,6 +85,11 @@ public class EmployeeWageServices {
         }
 
         return totalHours * wagePerHour;
+    }
+    ArrayList<CompanyEmployee> companies = new ArrayList<>();
+
+    public void addCompany(CompanyEmployee company){
+        companies.add(company);
     }
 
 }

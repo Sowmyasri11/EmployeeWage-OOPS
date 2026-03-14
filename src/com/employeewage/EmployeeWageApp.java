@@ -6,9 +6,10 @@ public class EmployeeWageApp {
 
         EmployeeWageServices service = new EmployeeWageServices();
 
-        int wage = service.computeEmployeeWage(20,20,100);
+        service.addCompany(new CompanyEmployee("TCS",20,20,100));
+        service.addCompany(new CompanyEmployee("Infosys",25,22,120));
 
-        System.out.println("Employee Wage : " + wage);
+        System.out.println("Companies added successfully");
 
     }
 }
