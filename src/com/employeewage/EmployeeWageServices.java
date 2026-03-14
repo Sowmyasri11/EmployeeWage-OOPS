@@ -25,4 +25,20 @@ public class EmployeeWageServices {
         return hours;
     }
 
+    public int calculateMonthlyWage()
+    {
+        int totalWage = 0;
+
+        for(int day = 1; day <= 20; day++)
+        {
+            int empType = (int)(Math.random()*3);
+
+            int hours = getWorkingHours(empType);
+
+            totalWage += hours * WAGE_PER_HOUR;
+        }
+
+        return totalWage;
+    }
+
 }
