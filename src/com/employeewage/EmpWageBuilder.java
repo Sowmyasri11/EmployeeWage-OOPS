@@ -3,61 +3,35 @@ package com.employeewage;
 public class EmpWageBuilder {
 
     // Instance Variables
-    private String companyName;
-    private int wagePerHour;
-    private int maxDays;
-    private int maxHours;
-    private int totalWage;
+    private CompanyEmpWage[] companies;
+    private int numOfCompanies;
 
-    public EmpWageBuilder(String companyName, int wagePerHour, int maxDays, int maxHours) {
-        this.companyName = companyName;
-        this.wagePerHour = wagePerHour;
-        this.maxDays = maxDays;
-        this.maxHours = maxHours;
-        this.totalWage = 0;
+    public EmpWageBuilder() {
+        companies = new CompanyEmpWage[10]; // Assume max 10 companies
+        numOfCompanies = 0;
     }
 
-    // Method to Compute Employee Wage
+    // Method to add company
+    public void addCompany(String companyName, int wagePerHour, int maxDays, int maxHours) {
+        companies[numOfCompanies] = new CompanyEmpWage(companyName, wagePerHour, maxDays, maxHours);
+        numOfCompanies++;
+    }
+
+    // Method to compute wage for all companies
     public void computeEmployeeWage() {
-        final int FULL_DAY_HOURS = 8;
-        final int PART_TIME_HOURS = 4;
+        for (int i = 0; i < numOfCompanies; i++) {
+            System.out.println("\nCompany: " + companies[i].getCompanyName());
+            companies[i].computeEmployeeWage();
+        }
+    }
 
-        int totalHours = 0;
-        int totalDays = 0;
-
-        while (totalHours < this.maxHours && totalDays < this.maxDays) {
-            totalDays++;
-            int empCheck = (int)(Math.random() * 2); // 0 or 1
-
-            if (empCheck == 1) {
-                System.out.println("Day " + totalDays + ": Employee is Present");
-                int empType = (int)(Math.random() * 2); // 0 - Part Time, 1 - Full Time
-                int hours = 0;
-                switch (empType) {
-                    case 0:
-                        hours = PART_TIME_HOURS;
-                        break;
-                    case 1:
-                        hours = FULL_DAY_HOURS;
-                        break;
-                }
-                totalHours += hours;
-                int dailyWage = this.wagePerHour * hours;
-                this.totalWage += dailyWage;
-                System.out.println("Daily Employee Wage: " + dailyWage);
-            } else {
-                System.out.println("Day " + totalDays + ": Employee is Absent");
-                System.out.println("Daily Employee Wage: 0");
+    // Method to get total wage by company name
+    public int getTotalWage(String companyName) {
+        for (int i = 0; i < numOfCompanies; i++) {
+            if (companies[i].getCompanyName().equals(companyName)) {
+                return companies[i].getTotalWage();
             }
         }
-
-        System.out.println("Total Days: " + totalDays);
-        System.out.println("Total Hours: " + totalHours);
-        System.out.println("Total Wage for " + this.companyName + ": " + this.totalWage);
-    }
-
-    // Getter for totalWage
-    public int getTotalWage() {
-        return totalWage;
+        return 0;
     }
 }
