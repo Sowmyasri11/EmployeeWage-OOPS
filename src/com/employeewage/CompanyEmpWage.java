@@ -1,5 +1,7 @@
 package com.employeewage;
 
+import java.util.ArrayList;
+
 public class CompanyEmpWage {
 
     // Instance Variables
@@ -8,6 +10,7 @@ public class CompanyEmpWage {
     private int maxDays;
     private int maxHours;
     private int totalWage;
+    private ArrayList<Integer> dailyWages;
 
     public CompanyEmpWage(String companyName, int wagePerHour, int maxDays, int maxHours) {
         this.companyName = companyName;
@@ -15,6 +18,7 @@ public class CompanyEmpWage {
         this.maxDays = maxDays;
         this.maxHours = maxHours;
         this.totalWage = 0;
+        this.dailyWages = new ArrayList<>();
     }
 
     // Method to Compute Employee Wage
@@ -44,10 +48,12 @@ public class CompanyEmpWage {
                 totalHours += hours;
                 int dailyWage = this.wagePerHour * hours;
                 this.totalWage += dailyWage;
+                this.dailyWages.add(dailyWage);
                 System.out.println("Daily Employee Wage: " + dailyWage);
             } else {
                 System.out.println("Day " + totalDays + ": Employee is Absent");
                 System.out.println("Daily Employee Wage: 0");
+                this.dailyWages.add(0);
             }
         }
 
@@ -64,5 +70,10 @@ public class CompanyEmpWage {
     // Getter for companyName
     public String getCompanyName() {
         return companyName;
+    }
+
+    // Getter for dailyWages
+    public ArrayList<Integer> getDailyWages() {
+        return dailyWages;
     }
 }
