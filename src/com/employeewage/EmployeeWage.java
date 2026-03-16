@@ -2,20 +2,16 @@ package com.employeewage;
 
 public class EmployeeWage {
 
-    // Class Variables
-    public static final int WAGE_PER_HOUR = 20;
-    public static final int FULL_DAY_HOURS = 8;
-    public static final int PART_TIME_HOURS = 4;
-    public static final int MAX_HOURS = 100;
-    public static final int MAX_DAYS = 20;
+    // Class Method to Compute Employee Wage for multiple companies
+    public static int computeEmployeeWage(int wagePerHour, int maxDays, int maxHours) {
+        final int FULL_DAY_HOURS = 8;
+        final int PART_TIME_HOURS = 4;
 
-    // Class Method to Compute Employee Wage
-    public static int computeEmployeeWage() {
         int totalWage = 0;
         int totalHours = 0;
         int totalDays = 0;
 
-        while (totalHours < MAX_HOURS && totalDays < MAX_DAYS) {
+        while (totalHours < maxHours && totalDays < maxDays) {
             totalDays++;
             int empCheck = (int)(Math.random() * 2); // 0 or 1
 
@@ -32,7 +28,7 @@ public class EmployeeWage {
                         break;
                 }
                 totalHours += hours;
-                int dailyWage = WAGE_PER_HOUR * hours;
+                int dailyWage = wagePerHour * hours;
                 totalWage += dailyWage;
                 System.out.println("Daily Employee Wage: " + dailyWage);
             } else {

@@ -5,8 +5,12 @@ public class Main {
 
         System.out.println("Welcome to Employee Wage Computation Program");
 
-        // UC7 - Refactor the Code to write a Class Method to Compute Employee Wage
-        EmployeeWage.computeEmployeeWage();
+        // UC8 - Compute Employee Wage for multiple companies
+        System.out.println("Company: TCS");
+        EmployeeWage.computeEmployeeWage(20, 20, 100);
+
+        System.out.println("\nCompany: Infosys");
+        EmployeeWage.computeEmployeeWage(25, 22, 120);
 
     }
 }
