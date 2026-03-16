@@ -5,12 +5,15 @@ public class Main {
 
         System.out.println("Welcome to Employee Wage Computation Program");
 
-        // UC8 - Compute Employee Wage for multiple companies
-        System.out.println("Company: TCS");
-        EmployeeWage.computeEmployeeWage(20, 20, 100);
+        // UC9 - Ability to save the Total Wage for Each Company
+        EmpWageBuilder tcs = new EmpWageBuilder("TCS", 20, 20, 100);
+        tcs.computeEmployeeWage();
 
-        System.out.println("\nCompany: Infosys");
-        EmployeeWage.computeEmployeeWage(25, 22, 120);
+        EmpWageBuilder infosys = new EmpWageBuilder("Infosys", 25, 22, 120);
+        infosys.computeEmployeeWage();
+
+        System.out.println("Total Wage for TCS: " + tcs.getTotalWage());
+        System.out.println("Total Wage for Infosys: " + infosys.getTotalWage());
 
     }
 }

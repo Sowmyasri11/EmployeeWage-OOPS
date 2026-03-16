@@ -1,17 +1,31 @@
 package com.employeewage;
 
-public class EmployeeWage {
+public class EmpWageBuilder {
 
-    // Class Method to Compute Employee Wage for multiple companies
-    public static int computeEmployeeWage(int wagePerHour, int maxDays, int maxHours) {
+    // Instance Variables
+    private String companyName;
+    private int wagePerHour;
+    private int maxDays;
+    private int maxHours;
+    private int totalWage;
+
+    public EmpWageBuilder(String companyName, int wagePerHour, int maxDays, int maxHours) {
+        this.companyName = companyName;
+        this.wagePerHour = wagePerHour;
+        this.maxDays = maxDays;
+        this.maxHours = maxHours;
+        this.totalWage = 0;
+    }
+
+    // Method to Compute Employee Wage
+    public void computeEmployeeWage() {
         final int FULL_DAY_HOURS = 8;
         final int PART_TIME_HOURS = 4;
 
-        int totalWage = 0;
         int totalHours = 0;
         int totalDays = 0;
 
-        while (totalHours < maxHours && totalDays < maxDays) {
+        while (totalHours < this.maxHours && totalDays < this.maxDays) {
             totalDays++;
             int empCheck = (int)(Math.random() * 2); // 0 or 1
 
@@ -28,8 +42,8 @@ public class EmployeeWage {
                         break;
                 }
                 totalHours += hours;
-                int dailyWage = wagePerHour * hours;
-                totalWage += dailyWage;
+                int dailyWage = this.wagePerHour * hours;
+                this.totalWage += dailyWage;
                 System.out.println("Daily Employee Wage: " + dailyWage);
             } else {
                 System.out.println("Day " + totalDays + ": Employee is Absent");
@@ -39,8 +53,11 @@ public class EmployeeWage {
 
         System.out.println("Total Days: " + totalDays);
         System.out.println("Total Hours: " + totalHours);
-        System.out.println("Total Wage: " + totalWage);
+        System.out.println("Total Wage for " + this.companyName + ": " + this.totalWage);
+    }
 
+    // Getter for totalWage
+    public int getTotalWage() {
         return totalWage;
     }
 }
